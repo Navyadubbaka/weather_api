@@ -16,6 +16,7 @@ body {
   /* background-color: black; */
 }
 .searchparent {
+  /* margin-top: 10px; */
   position: relative;
   width: 50%;
   height: fit-content;
