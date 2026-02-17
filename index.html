@@ -200,34 +200,34 @@
             class="completeday d-flex justify-content-between gap-3 align-items-center"
           >
             <div class="wholeday">
-              <h6 class="m-0">8:00 am</h6>
+              <h6 class="m-0">9:00 am</h6>
               <img src="cloud.png" alt="" srcset="" width="35px" />
-              <h6 class="m-0">14 &deg;</h6>
+              <h6 class="m-0 Nineam">4 &deg;</h6>
             </div>
             <div class="wholeday">
               <h6 class="m-0">12:00 pm</h6>
               <img src="download.png" alt="" srcset="" width="35px" />
-              <h6 class="m-0">29 &deg;</h6>
+              <h6 class="m-0 twelvepm">&deg;</h6>
             </div>
             <div class="wholeday">
               <h6 class="m-0">3:00 pm</h6>
               <img src="sun.png" alt="" srcset="" width="35px" />
-              <h6 class="m-0">30 &deg;</h6>
+              <h6 class="m-0 threepm">30 &deg;</h6>
             </div>
             <div class="wholeday">
               <h6 class="m-0">6:00 pm</h6>
               <img src="rainy.png" alt="" srcset="" width="35px" />
-              <h6 class="m-0">20 &deg;</h6>
+              <h6 class="m-0 sixpm">20 &deg;</h6>
             </div>
             <div class="wholeday">
               <h6 class="m-0">9:00 pm</h6>
               <img src="moon.png" alt="" srcset="" width="35px" />
-              <h6 class="m-0">19 &deg;</h6>
+              <h6 class="m-0 ninepm">19 &deg;</h6>
             </div>
             <div class="wholeday">
               <h6 class="m-0">12:00 am</h6>
               <img src="cloud.png" alt="" srcset="" width="35px" />
-              <h6 class="m-0">18 &deg;</h6>
+              <h6 class="m-0 twelveam">18 &deg;</h6>
             </div>
           </div>
         </div>
@@ -252,6 +252,11 @@
       }
       function fetchAQIFivedays(lat, lon) {
         const apiurl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=e9bc4248c8a28ec9fe7c39eba435b495`;
+        return fetch(apiurl).then((res) => res.json());
+      }
+
+      function gettodaydata(city) {
+        const apiurl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=e9bc4248c8a28ec9fe7c39eba435b495&units=metric`;
         return fetch(apiurl).then((res) => res.json());
       }
 
@@ -353,9 +358,33 @@
         innerText2 = dataFormat(data.sys.sunset).split(" ");
         document.querySelector(".sunsettime").innerText = innerText2[1] + " PM";
 
-        // .catch((err) => {
-        //   alert("City not found");
-        // });
+        const timeMap = {
+          "09:00:00": ".Nineam",
+          "12:00:00": ".twelvepm",
+          "15:00:00": ".threepm",
+          "18:00:00": ".sixpm",
+          "21:00:00": ".ninepm",
+          "00:00:00": ".twelveam",
+        };
+        gettodaydata(city).then((res) => {
+          console.log(res);
+
+          const slots = [
+            ".Nineam",
+            ".twelvepm",
+            ".threepm",
+            ".sixpm",
+            ".ninepm",
+            ".twelveam",
+          ];
+
+          for (let i = 0; i < 6; i++) {
+            if (res.list[i]) {
+              document.querySelector(slots[i]).innerText =
+                Math.round(res.list[i].main.temp) + " °C";
+            }
+          }
+        });
       }
     </script>
 
