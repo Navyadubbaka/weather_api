@@ -1,0 +1,175 @@
+body {
+  background: url("images/bg.avif");
+  /* background-position: bottom; */
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Comfortaa", "sans-serif";
+  color: white;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  /* background-color: black; */
+}
+.searchparent {
+  /* margin-top: 10px; */
+  position: relative;
+  width: 50%;
+  height: fit-content;
+  /* display: flex; */
+}
+.input {
+  border-radius: 25px;
+  width: 100%;
+  padding: 8px;
+  outline: none;
+}
+.searchicon {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 30px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.maincontent {
+  min-height: 90vh;
+  display: flex;
+}
+.leftdiv {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.leftchild {
+  background-color: rgba(212, 212, 212, 0.4);
+  width: 85%;
+  height: 40vh;
+  margin: auto;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+}
+
+.currenttemp h6 {
+  font-size: larger;
+}
+
+#cityname {
+  font-size: xx-large;
+  /* font-weight: bold; */
+}
+#citytemp {
+  font-size: x-large;
+}
+.rightdiv {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+#fivedays {
+  font-size: larger;
+}
+.rightrow {
+  width: 100%;
+  height: 27vh;
+}
+
+.extrametric {
+  background-color: rgba(212, 212, 212, 0.4);
+  width: fit-content;
+  height: 70%;
+  align-items: center;
+  border-radius: 10px;
+  padding: 1% 2%;
+}
+
+.rowtwodiv {
+  background-color: rgba(212, 212, 212, 0.4);
+  backdrop-filter: blur(8px);
+  width: 60%;
+  height: 90%;
+  border-radius: 10px;
+}
+.suntime {
+  font-size: larger;
+}
+.wholeday {
+  background-color: rgba(212, 212, 212, 0.4);
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  /* height: fit-content; */
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+@media only screen and (max-width: 767px) {
+  .leftdiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .rightdiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .maincontent {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .searchparent {
+    position: relative;
+    width: 85%;
+    height: fit-content;
+    /* display: flex; */
+  }
+  .rowone {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 85%;
+    margin: auto;
+  }
+  .rowtwo {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 85%;
+    margin: auto;
+  }
+  .rowtwodiv {
+    background-color: rgba(212, 212, 212, 0.4);
+    backdrop-filter: blur(8px);
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+    gap: 50px;
+  }
+  .rowthree {
+    margin-top: 50px;
+    height: 500px;
+    width: 100%;
+    align-items: center;
+  }
+  .completeday {
+    flex-wrap: wrap;
+    /* gap: 60px; */
+    width: 85%;
+    margin: auto;
+  }
+}
